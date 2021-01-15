@@ -47,6 +47,7 @@ function URLEncodeWithGBK(str) {
     return urlencode(str, 'gbk');
 }
 
+// 通过ISBN码查询
 function searchBookWithISBN(isbn) {
     // ePUBee
     opn(`http://cn.epubee.com/books/?s=${searchKeyEncrypt(isbn)}&input=1&action=`);
@@ -56,8 +57,11 @@ function searchBookWithISBN(isbn) {
     opn(`https://zh.1lib.us/s/${isbn}`);
     // Library Genesis
     opn(`http://libgen.rs/search.php?req=${isbn}`);
+    // 当当网
+    opn(`http://search.dangdang.com/?key=${isbn}&act=input`);
 }
 
+// 通过书名查询
 function searchBookWithBookName(bookName) {
     // ePUBee
     opn(`http://cn.epubee.com/books/?s=${searchKeyEncrypt(bookName)}&input=1&action=`);
@@ -67,6 +71,10 @@ function searchBookWithBookName(bookName) {
     opn(`https://zh.1lib.us/s/?q=${bookName}`);
     // Library Genesis
     opn(`http://libgen.rs/search.php?req=${bookName}`);
+    // 当当网
+    opn(`http://search.dangdang.com/?key=${bookName}& act=input`);
+    // 精品下载
+    opn(`http://www.j9p.com/search.asp?keyword=${URLEncodeWithGBK(bookName)}&searchType=`);
 }
 
 function run() {

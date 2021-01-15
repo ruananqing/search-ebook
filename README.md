@@ -1,5 +1,5 @@
 # It will have a better experience, if this script is used to search Chinese books.
-***
+
 ## Instructions:
 
 ### install node modules packages:

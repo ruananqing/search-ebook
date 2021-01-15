@@ -85,10 +85,8 @@ function run() {
         } else {
             searchBookWithBookName(answers.bookName);
         }
-
         run();
     });
-
 }
 
 run();

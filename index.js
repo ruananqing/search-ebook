@@ -81,10 +81,18 @@ function run() {
     inquirer.prompt(questions).then((answers) => {
         console.log('正在打开浏览器页面……');
         if (answers.mode == "ISBN") {
-            searchBookWithISBN(answers.ISBN);
+            // 去除空格、横杠
+            let isbn = answers.ISBN.replace(/\s*\-*/g, "");
+            // 验证ISBN码是否为13位数字
+            if (/^\d{13}$/.exec(isbn) != null) {
+                searchBookWithISBN(isbn);
+            } else {
+                console.log('\x1B[31m%s\x1B[0m', '输入的ISBN码格式有误，请重新输入');
+            }
         } else {
             searchBookWithBookName(answers.bookName);
         }
+
         run();
     });
 }

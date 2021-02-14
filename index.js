@@ -50,7 +50,7 @@ function URLEncodeWithGBK(str) {
 // 通过ISBN码查询
 function searchBookWithISBN(isbn) {
     // ePUBee
-    opn(`http://cn.epubee.com/books/?s=${searchKeyEncrypt(isbn)}&input=1&action=`);
+    opn(`http://www.ferebook.com/books/?s=${searchKeyEncrypt(isbn)}&input=1&action=`);
     // 全国图书馆参考咨询联盟
     opn(`http://book.ucdrs.superlib.net/search?Field=all&channel=search&sw=${isbn}`);
     // 数字图书馆
@@ -64,7 +64,7 @@ function searchBookWithISBN(isbn) {
 // 通过书名查询
 function searchBookWithBookName(bookName) {
     // ePUBee
-    opn(`http://cn.epubee.com/books/?s=${searchKeyEncrypt(bookName)}&input=1&action=`);
+    opn(`http://www.ferebook.com/books/?s=${searchKeyEncrypt(bookName)}&input=1&action=`);
     // 全国图书馆参考咨询联盟
     opn(`http://book.ucdrs.superlib.net/search?Field=all&channel=search&sw=${URLEncodeWithGBK(bookName)}`);
     // 数字图书馆
@@ -75,6 +75,8 @@ function searchBookWithBookName(bookName) {
     opn(`http://search.dangdang.com/?key=${bookName}& act=input`);
     // 精品下载
     opn(`http://www.j9p.com/search.asp?keyword=${URLEncodeWithGBK(bookName)}&searchType=`);
+    // 微信搜索(搜狗)
+    opn(`https://weixin.sogou.com/weixin?type=2&query=${bookName}+pdf`);
 }
 
 function run() {
